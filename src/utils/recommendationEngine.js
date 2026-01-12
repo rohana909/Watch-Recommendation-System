@@ -1,7 +1,7 @@
 import { watchDatabase, keywordCategories, genderKeywords, budgetKeywords } from '../data/watchDatabase';
 
 // Calculate similarity score between user input and watch
-function calculateMatchScore(watch, userInput, budget, gender) {
+function calculateMatchScore(watch, userInput, gender) {
   let score = 0;
   const inputLower = userInput.toLowerCase();
   const words = inputLower.split(/\s+/);
@@ -49,18 +49,6 @@ function calculateMatchScore(watch, userInput, budget, gender) {
     }
   }
 
-  // Budget matching
-  if (budget) {
-    const budgetNum = parseInt(budget);
-    if (budgetNum >= watch.priceRange.min && budgetNum >= watch.priceRange.max * 0.5) {
-      score += 20; // Within budget
-    } else if (budgetNum >= watch.priceRange.min) {
-      score += 10; // Can afford entry level
-    } else if (budgetNum < watch.priceRange.min * 0.5) {
-      score -= 20; // Way out of budget
-    }
-  }
-
   // Context-based matching
   const contextMatches = [
     { patterns: ["first date", "impress", "special occasion", "anniversary"], boost: ["dress", "luxury-sport"] },
@@ -92,16 +80,33 @@ function calculateMatchScore(watch, userInput, budget, gender) {
   return score;
 }
 
+// Check if watch is within budget
+function isWithinBudget(watch, budget) {
+  const budgetNum = parseInt(budget);
+  // Watch is within budget if user can afford at least the minimum price
+  return watch.priceRange.min <= budgetNum;
+}
+
 // Main recommendation function
 export function getRecommendations(userInput, budget, gender, limit = 8) {
   if (!userInput || userInput.trim().length === 0) {
     return [];
   }
 
-  // Calculate scores for all watches
-  const scoredWatches = watchDatabase.map(watch => ({
+  const budgetNum = parseInt(budget);
+
+  // STRICT BUDGET FILTER: Only include watches where minimum price is within budget
+  const affordableWatches = watchDatabase.filter(watch => isWithinBudget(watch, budgetNum));
+
+  // If no watches are within budget, return empty array
+  if (affordableWatches.length === 0) {
+    return [];
+  }
+
+  // Calculate scores for affordable watches only
+  const scoredWatches = affordableWatches.map(watch => ({
     ...watch,
-    score: calculateMatchScore(watch, userInput, budget, gender)
+    score: calculateMatchScore(watch, userInput, gender)
   }));
 
   // Sort by score and filter out low scores
@@ -109,7 +114,7 @@ export function getRecommendations(userInput, budget, gender, limit = 8) {
     .filter(watch => watch.score > 0)
     .sort((a, b) => b.score - a.score);
 
-  // If we have very few results, return top matches regardless
+  // If we have very few results with positive scores, return top affordable matches
   if (sortedWatches.length < 3) {
     return scoredWatches
       .sort((a, b) => b.score - a.score)
