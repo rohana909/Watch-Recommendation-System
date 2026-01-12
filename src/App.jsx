@@ -50,6 +50,10 @@ function App() {
     return Math.min(Math.round(score / 10) * 10, 100) + "%";
   };
 
+  const getBrandInitial = (brand) => {
+    return brand.charAt(0).toUpperCase();
+  };
+
   return (
     <div className="app">
       <div className="background-gradient"></div>
@@ -168,12 +172,10 @@ function App() {
                 {recommendations.map((watch, index) => (
                   <article key={watch.id} className="watch-card" style={getCardStyle(index)}>
                     <div className="watch-image-container">
-                      <img
-                        src={watch.image}
-                        alt={watch.brand + " " + watch.collection}
-                        className="watch-image"
-                        onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"; }}
-                      />
+                      <div className="brand-logo-placeholder">
+                        <span className="brand-initial">{getBrandInitial(watch.brand)}</span>
+                        <span className="brand-name-small">{watch.brand}</span>
+                      </div>
                       <div className="watch-type-badge">{watch.type}</div>
                       <div className="match-score">
                         <span className="score-value">{getMatchPercent(watch.score)}</span>
