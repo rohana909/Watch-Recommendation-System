@@ -25,9 +25,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Description is required' });
   }
 
-  const openaiKey = process.env.VITE_OPENAI_API_KEY;
-  const tavilyKey = process.env.VITE_TAVILY_API_KEY;
-  const model = process.env.VITE_OPENAI_MODEL || 'gpt-4o';
+  // Check both VITE_ prefixed and non-prefixed env vars
+  const openaiKey = process.env.VITE_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+  const tavilyKey = process.env.VITE_TAVILY_API_KEY || process.env.TAVILY_API_KEY;
+  const model = process.env.VITE_OPENAI_MODEL || process.env.OPENAI_MODEL || 'gpt-4o';
+
+  console.log('API called with:', { description, budget, gender });
+  console.log('OpenAI key exists:', !!openaiKey);
+  console.log('Tavily key exists:', !!tavilyKey);
 
   if (!openaiKey) {
     return res.status(500).json({ error: 'OpenAI API key not configured' });
