@@ -1,5 +1,5 @@
 // Vercel Serverless Function for Watch Recommendations
-// This proxies requests to OpenAI and Tavily to avoid CORS issues
+// Proxies requests to OpenAI and Tavily APIs to avoid CORS issues
 
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 const TAVILY_API_URL = "https://api.tavily.com/search";
