@@ -2,11 +2,6 @@ import { useState } from "react";
 import { getLLMRecommendations, formatPriceRange, getBudgetText } from "./utils/llmRecommendationEngine";
 import "./App.css";
 
-// Environment variables for default API keys (set by site owner)
-const DEFAULT_OPENAI_KEY = import.meta.env.VITE_OPENAI_API_KEY || "";
-const DEFAULT_TAVILY_KEY = import.meta.env.VITE_TAVILY_API_KEY || "";
-const HAS_DEFAULT_KEYS = Boolean(DEFAULT_OPENAI_KEY);
-
 function App() {
   const [description, setDescription] = useState("");
   const [budget, setBudget] = useState(2000);
@@ -16,42 +11,8 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
 
-  // API key states
-  const [useOwnKeys, setUseOwnKeys] = useState(!HAS_DEFAULT_KEYS);
-  const [apiKey, setApiKey] = useState(localStorage.getItem("openai_api_key") || "");
-  const [tavilyApiKey, setTavilyApiKey] = useState(localStorage.getItem("tavily_api_key") || "");
-  const [showApiKey, setShowApiKey] = useState(false);
-  const [showTavilyKey, setShowTavilyKey] = useState(false);
-
-  // Get the active API keys based on mode
-  const getActiveOpenAIKey = () => useOwnKeys ? apiKey : DEFAULT_OPENAI_KEY;
-  const getActiveTavilyKey = () => useOwnKeys ? tavilyApiKey : DEFAULT_TAVILY_KEY;
-
-  const handleApiKeyChange = (e) => {
-    const key = e.target.value;
-    setApiKey(key);
-    localStorage.setItem("openai_api_key", key);
-  };
-
-  const handleTavilyKeyChange = (e) => {
-    const key = e.target.value;
-    setTavilyApiKey(key);
-    localStorage.setItem("tavily_api_key", key);
-  };
-
   const handleSearch = async () => {
     if (!description.trim()) return;
-
-    const activeOpenAIKey = getActiveOpenAIKey();
-    const activeTavilyKey = getActiveTavilyKey();
-
-    if (!activeOpenAIKey) {
-      setError(useOwnKeys
-        ? "Please enter your OpenAI API key first."
-        : "Default API keys are not configured. Please use your own API keys.");
-      setHasSearched(true);
-      return;
-    }
 
     setIsSearching(true);
     setHasSearched(true);
@@ -59,7 +20,7 @@ function App() {
     setRecommendations([]);
 
     try {
-      const results = await getLLMRecommendations(description, budget, gender, activeOpenAIKey, activeTavilyKey || null);
+      const results = await getLLMRecommendations(description, budget, gender);
       setRecommendations(results);
     } catch (err) {
       setError(err.message);
@@ -131,7 +92,7 @@ function App() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Describe what you are looking for... Examples: I need a watch for swimming, elegant for business meetings, rugged for hiking, or a gift for someone special."
+                placeholder="Describe what you are looking for... Examples: I need a dive watch like the Rolex Submariner, an elegant dress watch for business meetings, a rugged field watch for hiking, or a gift for a watch enthusiast."
                 rows={5}
               />
             </div>
@@ -181,113 +142,6 @@ function App() {
               </div>
             </div>
 
-            {/* API Key Mode Toggle */}
-            <div className="api-mode-section">
-              <div className="api-mode-toggle">
-                <label className="toggle-switch">
-                  <input
-                    type="checkbox"
-                    checked={useOwnKeys}
-                    onChange={(e) => setUseOwnKeys(e.target.checked)}
-                  />
-                  <span className="toggle-slider"></span>
-                </label>
-                <span className="toggle-label">
-                  {useOwnKeys ? "Using my own API keys" : "Using default API keys"}
-                </span>
-                {!HAS_DEFAULT_KEYS && !useOwnKeys && (
-                  <span className="no-default-warning">No default keys configured</span>
-                )}
-              </div>
-              {!useOwnKeys && HAS_DEFAULT_KEYS && (
-                <p className="api-mode-hint">You're using the site's default API keys. Toggle on to use your own keys for more control.</p>
-              )}
-            </div>
-
-            {/* API Key Inputs - Only show when using own keys */}
-            {useOwnKeys && (
-              <>
-                <div className="input-group api-key-group">
-                  <label htmlFor="apiKey">
-                    <span className="label-icon">
-                      <svg viewBox="0 0 24 24" width="18" height="18">
-                        <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    OpenAI API Key
-                  </label>
-              <div className="api-key-input-wrapper">
-                <input
-                  type={showApiKey ? "text" : "password"}
-                  id="apiKey"
-                  value={apiKey}
-                  onChange={handleApiKeyChange}
-                  placeholder="sk-..."
-                  className="api-key-input"
-                />
-                <button
-                  type="button"
-                  className="toggle-visibility-btn"
-                  onClick={() => setShowApiKey(!showApiKey)}
-                >
-                  {showApiKey ? (
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                      <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    </svg>
-                  )}
-                </button>
-              </div>
-              <span className="api-key-hint">Get your key from <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">platform.openai.com</a></span>
-            </div>
-
-            <div className="input-group api-key-group tavily-group">
-              <label htmlFor="tavilyKey">
-                <span className="label-icon">
-                  <svg viewBox="0 0 24 24" width="18" height="18">
-                    <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </span>
-                Tavily API Key <span className="optional-badge">(Optional - enables web search)</span>
-              </label>
-              <div className="api-key-input-wrapper">
-                <input
-                  type={showTavilyKey ? "text" : "password"}
-                  id="tavilyKey"
-                  value={tavilyApiKey}
-                  onChange={handleTavilyKeyChange}
-                  placeholder="tvly-..."
-                  className="api-key-input"
-                />
-                <button
-                  type="button"
-                  className="toggle-visibility-btn"
-                  onClick={() => setShowTavilyKey(!showTavilyKey)}
-                >
-                  {showTavilyKey ? (
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                      <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" width="18" height="18">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    </svg>
-                  )}
-                </button>
-              </div>
-              <span className="api-key-hint">Free key from <a href="https://tavily.com" target="_blank" rel="noopener noreferrer">tavily.com</a> - enables real-time web search for accurate prices</span>
-                </div>
-              </>
-            )}
-
             <div className="action-buttons">
               <button
                 className="search-btn"
@@ -322,12 +176,6 @@ function App() {
                 </svg>
                 <h3>Error</h3>
                 <p>{error}</p>
-                {error.includes("API key") && (
-                  <div className="error-help">
-                    <p>Get your API key from:</p>
-                    <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">platform.openai.com/api-keys</a>
-                  </div>
-                )}
               </div>
             ) : (
               <>
@@ -399,7 +247,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>Built with passion for watch enthusiasts</p>
+        <p>Powered by AI with real-time web search</p>
       </footer>
     </div>
   );
