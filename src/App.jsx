@@ -2,6 +2,67 @@ import { useState } from "react";
 import { getLLMRecommendations, formatPriceRange, getBudgetText } from "./utils/llmRecommendationEngine";
 import "./App.css";
 
+// Watch Suggestions Data - Easy to update
+const watchSuggestions = {
+  "Under $500": [
+    { name: "Orient Bambino", link: "https://www.orientwatchusa.com/collections/orient-bambino" },
+    { name: "Sternglas Hamburg", link: "https://www.sternglas.com/products/hamburg-silver" },
+    { name: "Moonswatch Mission to Earth", link: "https://www.swatch.com/en-us/bioceramic-moonswatch-collection/bioceramic-mission-on-earth.html" },
+    { name: "G-Shock GM2110D-8A", link: "https://www.casio.com/us/watches/gshock/product.GM-2110D-8A/" },
+    { name: "Seiko Presage Cocktail Time", link: "https://seikousa.com/products/srpb41" },
+  ],
+  "Under $1,500": [
+    { name: "Tissot PRX Automatic", link: "https://www.tissotwatches.com/en-us/collection/main-collections/tissot-prx.html" },
+    { name: "Lorier Olympia Chronograph", link: "https://www.lorierwatches.com/products/olympia-sii" },
+    { name: "Studio Underdog Watermelon", link: "https://underd0g.com/products/01wmb" },
+    { name: "Longines La Grande Classique", link: "https://www.longines.com/en-us/watches/elegance/la-grande-classique" },
+    { name: "Christopher Ward Twelve", link: "https://www.christopherward.com/int/the-twelve-watches" },
+    { name: "Junghans Max Bill MEGA", link: "https://www.junghans.de/en/collection/watches/junghans-max-bill/max-bill-edition-set-60/58410002" },
+    { name: "Frederique Constant Classics", link: "https://us.frederiqueconstant.com/collection/mens-classics/" },
+    { name: "KUOE Royal Smith", link: "https://www.kuoe-en.com/shop" },
+    { name: "Furlan Marri Sabbia Rosa", link: "https://www.furlanmarri.com/products/sabbia-rosa" },
+  ],
+  "Under $5,000": [
+    { name: "Tudor Black Bay 54", link: "https://www.tudorwatch.com/en/watches/black-bay-54" },
+    { name: "Christopher Ward Twelve Ti", link: "https://www.christopherward.com/the-twelve-watches/the-twelve-(ti)/C12-40ADC1-T00P0-B0.html" },
+    { name: "Nomos Club Sport Neomatik", link: "https://nomos-glashuette.com/en-us/watches/families/club" },
+    { name: "Longines Spirit Zulu Time", link: "https://www.longines.com/en-us/watches/spirit/spirit-zulu-time" },
+    { name: "Cartier Tank Must", link: "https://www.cartier.com/en-us/watches/collections/tank/tank-must-de-cartier-watch-CRWSTA0108.html" },
+    { name: "FC Heartbeat Moonphase", link: "https://us.frederiqueconstant.com/collection/mens-heart-beat/" },
+    { name: "MING 37.08 Starlight", link: "https://www.ming.watch/featured-product/ming-37-08-starlight" },
+    { name: "Oris Big Crown Pointer Date", link: "https://www.oris.ch/en-US/product/watch/big-crown/big-crown-pointer-date-calibre-403/01-403-7776-4065-07-5-19-11" },
+  ],
+  "Under $10,000": [
+    { name: "Rolex Datejust", link: "https://www.rolex.com/en-us/watches/datejust" },
+    { name: "Rolex Explorer", link: "https://www.rolex.com/en-us/watches/explorer" },
+    { name: "Omega Speedmaster White", link: "https://www.omegawatches.com/en-us/watch-omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31030425004001" },
+    { name: "Cartier Santos", link: "https://www.cartier.com/en-us/watches/collections/santos-de-cartier/" },
+    { name: "Grand Seiko Heritage", link: "https://www.grand-seiko.com/us-en/collections/heritage" },
+    { name: "IWC Portofino", link: "https://www.iwc.com/us-en/watches/portofino" },
+    { name: "IWC Mark XX", link: "https://www.iwc.com/us-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx" },
+    { name: "JLC Master Ultra Thin Date", link: "https://www.jaeger-lecoultre.com/us-en/watches/master-ultra-thin" },
+    { name: "Omega Aqua Terra", link: "https://www.omegawatches.com/en-us/watches/seamaster/aqua-terra-150m/catalog" },
+  ],
+  "Over $10,000": [
+    { name: "Rolex Daytona", link: "https://www.rolex.com/en-us/watches/cosmograph-daytona" },
+    { name: "Blancpain Villeret", link: "https://www.blancpain.com/en-us/collections/villeret-collection" },
+    { name: "IWC Portugieser", link: "https://www.iwc.com/us-en/watches/portugieser/introduction-to-portugieser-watches" },
+    { name: "JLC Master Moonphase", link: "https://www.jaeger-lecoultre.com/us-en/watches/master-ultra-thin/master-ultra-thin-moon-stainless-steel-q1368430" },
+    { name: "A. Lange Saxonia Thin", link: "https://www.alange-soehne.com/us-en/timepieces/saxonia/saxonia-thin" },
+    { name: "A. Lange Saxonia Moon", link: "https://www.alange-soehne.com/us-en/timepieces/saxonia/saxonia-moon-phase/saxonia-moon-phase-in-750-pink-gold-384-032" },
+    { name: "Breguet Classique", link: "https://www.breguet.com/en/timepieces/classique" },
+    { name: "Parmigiani Tonda", link: "https://www.parmigiani.com/en/collections/tonda-pf/" },
+    { name: "F.P. Journe Chronometre", link: "https://www.fpjourne.com/en/collection/classique-collection/chronometre-souverain" },
+    { name: "AP Royal Oak", link: "https://www.audemarspiguet.com/com/en/collections/royal-oak-collection.html" },
+    { name: "MB&F", link: "https://www.mbandf.com/" },
+    { name: "Arnold & Son", link: "https://www.arnoldandson.com/" },
+    { name: "Vacheron Overseas", link: "https://www.vacheron-constantin.com/us/en/watches/all-collections/overseas.html" },
+    { name: "Patek Nautilus", link: "https://www.patek.com/en/collection/nautilus" },
+  ],
+};
+
+const priceCategories = ["Under $500", "Under $1,500", "Under $5,000", "Under $10,000", "Over $10,000"];
+
 function App() {
   const [description, setDescription] = useState("");
   const [budget, setBudget] = useState(2000);
@@ -10,6 +71,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(null);
+  const [expandedCategory, setExpandedCategory] = useState("Under $500");
 
   const handleSearch = async () => {
     if (!description.trim()) return;
@@ -76,8 +138,10 @@ function App() {
       </header>
 
       <main className="main-content">
-        <section className="search-section">
-          <div className="search-card">
+        <div className="content-layout">
+          <div className="main-area">
+            <section className="search-section">
+              <div className="search-card">
             <div className="input-group description-group">
               <label htmlFor="description">
                 <span className="label-icon">
@@ -244,6 +308,63 @@ function App() {
             )}
           </section>
         )}
+          </div>
+
+          {/* Suggestions Sidebar */}
+          <aside className="picks-sidebar">
+            <div className="picks-header">
+              <svg viewBox="0 0 24 24" width="20" height="20" className="picks-icon">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+              </svg>
+              <h2>Suggestions from Rohan (& friends)</h2>
+            </div>
+
+            <div className="price-categories">
+              {priceCategories.map((category) => (
+                <div key={category} className="price-category">
+                  <button
+                    className={`category-header ${expandedCategory === category ? 'expanded' : ''}`}
+                    onClick={() => setExpandedCategory(expandedCategory === category ? null : category)}
+                  >
+                    <span className="category-title">{category}</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      className={`chevron ${expandedCategory === category ? 'rotated' : ''}`}
+                    >
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  {expandedCategory === category && (
+                    <div className="category-content">
+                      <ul className="picks-list">
+                        {watchSuggestions[category].map((watch, idx) => (
+                          <li key={idx}>
+                            <a
+                              href={watch.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={watch.link === "#" ? "coming-soon" : ""}
+                            >
+                              {watch.name}
+                              {watch.link !== "#" && (
+                                <svg viewBox="0 0 24 24" width="12" height="12">
+                                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              )}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
       </main>
 
       <footer className="footer">

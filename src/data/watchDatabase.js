@@ -1,4 +1,5 @@
 // Comprehensive watch database with brands, collections, and metadata
+// Images sourced from Unsplash and Pixabay (free commercial use)
 export const watchDatabase = [
   // DIVE WATCHES
   {
@@ -8,7 +9,7 @@ export const watchDatabase = [
     type: "dive",
     gender: ["M", "unisex"],
     priceRange: { min: 8000, max: 15000 },
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",
+    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400&fit=crop",
     link: "https://www.rolex.com/watches/submariner",
     description: "Iconic dive watch with 300m water resistance",
     keywords: ["diving", "water", "swimming", "ocean", "sea", "sport", "adventure", "robust", "professional", "luxury", "classic", "timeless"]
@@ -20,7 +21,7 @@ export const watchDatabase = [
     type: "dive",
     gender: ["M", "unisex"],
     priceRange: { min: 5000, max: 10000 },
-    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=400",
+    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=400&fit=crop",
     link: "https://www.omegawatches.com/watches/seamaster",
     description: "Professional dive watch worn by James Bond",
     keywords: ["diving", "water", "swimming", "ocean", "elegant", "sophisticated", "professional", "adventure", "spy", "movies"]
@@ -32,7 +33,7 @@ export const watchDatabase = [
     type: "dive",
     gender: ["M", "unisex"],
     priceRange: { min: 300, max: 2000 },
-    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400",
+    image: "https://images.unsplash.com/photo-1639006727189-4303b74ef0cd?w=400&fit=crop",
     link: "https://www.seikowatches.com/global-en/products/prospex",
     description: "Reliable Japanese dive watches at great value",
     keywords: ["diving", "water", "swimming", "budget", "value", "reliable", "japanese", "sport", "adventure", "affordable"]
@@ -44,7 +45,7 @@ export const watchDatabase = [
     type: "dive",
     gender: ["M", "unisex"],
     priceRange: { min: 3500, max: 5000 },
-    image: "https://images.unsplash.com/photo-1548171915-e79a380a2a4b?w=400",
+    image: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=400&fit=crop",
     link: "https://www.tudorwatch.com/watches/black-bay",
     description: "Heritage-inspired dive watch with vintage charm",
     keywords: ["diving", "water", "vintage", "heritage", "classic", "robust", "adventure", "retro", "stylish"]
@@ -58,7 +59,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 20000, max: 50000 },
-    image: "https://images.unsplash.com/photo-1594576722512-582bcd46fba3?w=400",
+    image: "https://images.unsplash.com/photo-1594576722512-582bcd46fba3?w=400&fit=crop",
     link: "https://www.patek.com/en/collection/calatrava",
     description: "The quintessential dress watch, pure elegance",
     keywords: ["formal", "elegant", "business", "office", "meeting", "suit", "sophisticated", "luxury", "investment", "heirloom", "wedding", "special occasion"]
@@ -70,7 +71,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 8000, max: 25000 },
-    image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=400",
+    image: "https://images.unsplash.com/photo-1639037687665-1fe9839e9c1a?w=400&fit=crop",
     link: "https://www.jaeger-lecoultre.com/reverso",
     description: "Art Deco masterpiece with reversible case",
     keywords: ["formal", "elegant", "art deco", "unique", "sophisticated", "luxury", "artistic", "business", "suit", "classic"]
@@ -82,7 +83,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 3000, max: 15000 },
-    image: "https://images.unsplash.com/photo-1639037687665-1fe9839e9c1a?w=400",
+    image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=400&fit=crop",
     link: "https://www.cartier.com/en-us/watches/tank",
     description: "Timeless rectangular design, worn by icons",
     keywords: ["formal", "elegant", "classic", "iconic", "fashion", "sophisticated", "french", "slim", "dress", "celebrity"]
@@ -94,7 +95,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["F", "unisex"],
     priceRange: { min: 1000, max: 3000 },
-    image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=400",
+    image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&fit=crop",
     link: "https://www.longines.com/watches/dolcevita",
     description: "Elegant rectangular watch with Italian flair",
     keywords: ["formal", "elegant", "italian", "feminine", "sophisticated", "slim", "dress", "romantic", "graceful"]
@@ -108,7 +109,7 @@ export const watchDatabase = [
     type: "sport",
     gender: ["M", "unisex"],
     priceRange: { min: 15000, max: 35000 },
-    image: "https://images.unsplash.com/photo-1627037558426-c2d07beda3af?w=400",
+    image: "https://images.unsplash.com/photo-1627037558426-c2d07beda3af?w=400&fit=crop",
     link: "https://www.rolex.com/watches/cosmograph-daytona",
     description: "Legendary racing chronograph",
     keywords: ["racing", "speed", "sport", "chronograph", "motorsport", "active", "performance", "luxury", "iconic", "dynamic"]
@@ -120,7 +121,7 @@ export const watchDatabase = [
     type: "sport",
     gender: ["M", "unisex"],
     priceRange: { min: 3000, max: 8000 },
-    image: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=400",
+    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&fit=crop",
     link: "https://www.tagheuer.com/carrera",
     description: "Motorsport-inspired chronograph",
     keywords: ["racing", "speed", "sport", "chronograph", "motorsport", "active", "dynamic", "modern", "bold"]
@@ -132,7 +133,7 @@ export const watchDatabase = [
     type: "sport",
     gender: ["M", "unisex"],
     priceRange: { min: 5000, max: 12000 },
-    image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=400",
+    image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=400&fit=crop",
     link: "https://www.omegawatches.com/watches/speedmaster",
     description: "The Moonwatch - first watch worn on the moon",
     keywords: ["space", "racing", "chronograph", "historic", "iconic", "nasa", "adventure", "exploration", "sport", "legendary"]
@@ -144,7 +145,7 @@ export const watchDatabase = [
     type: "sport",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 500, max: 1500 },
-    image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400",
+    image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&fit=crop",
     link: "https://www.garmin.com/fenix",
     description: "Advanced GPS multisport smartwatch",
     keywords: ["fitness", "running", "hiking", "gps", "smart", "training", "outdoor", "health", "tracking", "marathon", "triathlon", "cycling"]
@@ -158,7 +159,7 @@ export const watchDatabase = [
     type: "pilot",
     gender: ["M", "unisex"],
     priceRange: { min: 8000, max: 20000 },
-    image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=400",
+    image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=400&fit=crop",
     link: "https://www.iwc.com/pilots-watches",
     description: "Iconic oversized pilot's watch",
     keywords: ["flying", "aviation", "pilot", "travel", "adventure", "bold", "large", "military", "professional", "masculine"]
@@ -170,7 +171,7 @@ export const watchDatabase = [
     type: "pilot",
     gender: ["M", "unisex"],
     priceRange: { min: 7000, max: 15000 },
-    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400",
+    image: "https://images.unsplash.com/photo-1548171915-e79a380a2a4b?w=400&fit=crop",
     link: "https://www.breitling.com/navitimer",
     description: "Aviation chronograph with slide rule bezel",
     keywords: ["flying", "aviation", "pilot", "chronograph", "technical", "professional", "complex", "sophisticated", "travel"]
@@ -182,7 +183,7 @@ export const watchDatabase = [
     type: "pilot",
     gender: ["M", "unisex"],
     priceRange: { min: 500, max: 2000 },
-    image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?w=400",
+    image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?w=400&fit=crop",
     link: "https://www.hamiltonwatch.com/khaki-aviation",
     description: "Affordable pilot watches with military heritage",
     keywords: ["flying", "aviation", "pilot", "military", "affordable", "value", "heritage", "reliable", "field"]
@@ -196,7 +197,7 @@ export const watchDatabase = [
     type: "everyday",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 7000, max: 15000 },
-    image: "https://images.unsplash.com/photo-1548169874-53e85f753f1e?w=400",
+    image: "https://images.unsplash.com/photo-1548169874-53e85f753f1e?w=400&fit=crop",
     link: "https://www.rolex.com/watches/datejust",
     description: "Versatile luxury watch for any occasion",
     keywords: ["versatile", "everyday", "classic", "elegant", "business", "casual", "reliable", "iconic", "timeless", "gift"]
@@ -208,7 +209,7 @@ export const watchDatabase = [
     type: "luxury-sport",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 20000, max: 60000 },
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&fit=crop",
     link: "https://www.audemarspiguet.com/royal-oak",
     description: "Iconic luxury sports watch with octagonal bezel",
     keywords: ["luxury", "sport", "iconic", "bold", "statement", "sophisticated", "modern", "investment", "prestige", "steel"]
@@ -220,7 +221,7 @@ export const watchDatabase = [
     type: "everyday",
     gender: ["M", "unisex"],
     priceRange: { min: 3000, max: 8000 },
-    image: "https://images.unsplash.com/photo-1620625515032-6ed0c1790571?w=400",
+    image: "https://images.unsplash.com/photo-1620625515032-6ed0c1790571?w=400&fit=crop",
     link: "https://www.grand-seiko.com/collections/heritage",
     description: "Japanese perfection with exceptional finishing",
     keywords: ["quality", "craftsmanship", "japanese", "precision", "elegant", "subtle", "sophisticated", "value", "understated"]
@@ -234,7 +235,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["F", "unisex"],
     priceRange: { min: 4000, max: 12000 },
-    image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400",
+    image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=400&fit=crop",
     link: "https://www.cartier.com/ballon-bleu",
     description: "Elegant round watch with distinctive crown",
     keywords: ["elegant", "feminine", "luxury", "romantic", "jewelry", "sophisticated", "fashion", "gift", "classic", "french"]
@@ -246,7 +247,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["F"],
     priceRange: { min: 7000, max: 15000 },
-    image: "https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?w=400",
+    image: "https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?w=400&fit=crop",
     link: "https://www.rolex.com/watches/lady-datejust",
     description: "Feminine elegance meets Rolex quality",
     keywords: ["elegant", "feminine", "luxury", "classic", "sophisticated", "versatile", "timeless", "gift", "status"]
@@ -258,7 +259,7 @@ export const watchDatabase = [
     type: "dress",
     gender: ["F", "unisex"],
     priceRange: { min: 3000, max: 8000 },
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400",
+    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400&fit=crop",
     link: "https://www.omegawatches.com/constellation",
     description: "Elegant watch with star emblem",
     keywords: ["elegant", "feminine", "sophisticated", "jewelry", "dress", "luxury", "romantic", "stars", "celestial"]
@@ -272,7 +273,7 @@ export const watchDatabase = [
     type: "outdoor",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 50, max: 500 },
-    image: "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=400",
+    image: "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=400&fit=crop",
     link: "https://www.casio.com/gshock",
     description: "Virtually indestructible sports watch",
     keywords: ["tough", "durable", "outdoor", "adventure", "budget", "affordable", "rugged", "military", "sport", "shock", "water"]
@@ -284,7 +285,7 @@ export const watchDatabase = [
     type: "outdoor",
     gender: ["M", "unisex"],
     priceRange: { min: 300, max: 800 },
-    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=400",
+    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=400&fit=crop",
     link: "https://www.luminox.com/navy-seal",
     description: "Military-grade watch with self-powered illumination",
     keywords: ["military", "tactical", "night", "outdoor", "adventure", "rugged", "durable", "professional", "tough"]
@@ -298,7 +299,7 @@ export const watchDatabase = [
     type: "minimalist",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 1500, max: 4000 },
-    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400",
+    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400&fit=crop",
     link: "https://nomos-glashuette.com/tangente",
     description: "German Bauhaus design at its finest",
     keywords: ["minimalist", "clean", "simple", "bauhaus", "german", "elegant", "modern", "understated", "design", "artistic"]
@@ -310,7 +311,7 @@ export const watchDatabase = [
     type: "minimalist",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 800, max: 2000 },
-    image: "https://images.unsplash.com/photo-1495857000853-fe46c8aefc30?w=400",
+    image: "https://images.unsplash.com/photo-1495857000853-fe46c8aefc30?w=400&fit=crop",
     link: "https://www.junghans.de/max-bill",
     description: "Iconic Bauhaus design by legendary architect",
     keywords: ["minimalist", "bauhaus", "clean", "simple", "german", "design", "architectural", "artistic", "elegant", "affordable"]
@@ -324,7 +325,7 @@ export const watchDatabase = [
     type: "smart",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 700, max: 1200 },
-    image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400",
+    image: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=400&fit=crop",
     link: "https://www.apple.com/apple-watch-ultra",
     description: "Premium smartwatch for athletes and adventurers",
     keywords: ["smart", "fitness", "health", "tracking", "notifications", "outdoor", "sport", "technology", "modern", "connected", "apple"]
@@ -336,7 +337,7 @@ export const watchDatabase = [
     type: "smart",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 300, max: 600 },
-    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400",
+    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&fit=crop",
     link: "https://www.samsung.com/galaxy-watch",
     description: "Feature-rich Android smartwatch",
     keywords: ["smart", "fitness", "health", "android", "notifications", "technology", "modern", "connected", "affordable"]
@@ -350,7 +351,7 @@ export const watchDatabase = [
     type: "vintage",
     gender: ["M", "unisex"],
     priceRange: { min: 1500, max: 3000 },
-    image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?w=400",
+    image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?w=400&fit=crop",
     link: "https://www.oris.ch/big-crown",
     description: "Vintage pilot styling with modern reliability",
     keywords: ["vintage", "heritage", "pilot", "retro", "classic", "swiss", "value", "history", "elegant"]
@@ -362,7 +363,7 @@ export const watchDatabase = [
     type: "vintage",
     gender: ["M", "F", "unisex"],
     priceRange: { min: 300, max: 700 },
-    image: "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?w=400",
+    image: "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?w=400&fit=crop",
     link: "https://www.tissotwatches.com/prx",
     description: "70s-inspired integrated bracelet watch",
     keywords: ["vintage", "retro", "70s", "affordable", "swiss", "value", "stylish", "trendy", "integrated"]
@@ -376,7 +377,7 @@ export const watchDatabase = [
     type: "tool",
     gender: ["M", "unisex"],
     priceRange: { min: 1200, max: 2000 },
-    image: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=400",
+    image: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=400&fit=crop",
     link: "https://www.sinn.de/en/556",
     description: "German engineering for everyday professionals",
     keywords: ["tool", "professional", "german", "reliable", "robust", "everyday", "practical", "quality", "understated"]
