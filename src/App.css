@@ -14,6 +14,21 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Light Theme */
+[data-theme="light"] {
+  --primary: #f5f5f7;
+  --secondary: #e8e8ed;
+  --accent: #d43654;
+  --accent-hover: #e94560;
+  --gold: #b8960c;
+  --text-primary: #1a1a2e;
+  --text-secondary: #555566;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --bg-card-hover: rgba(0, 0, 0, 0.07);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1191,4 +1206,189 @@ body {
 
 .picks-sidebar::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 175, 55, 0.4);
+}
+
+/* ===== Light Theme Overrides ===== */
+
+/* Background gradient */
+[data-theme="light"] .background-gradient {
+  background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 50%, #dcdce5 100%);
+}
+
+[data-theme="light"] .background-gradient::before {
+  background: radial-gradient(ellipse at 20% 50%, rgba(212, 54, 84, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(184, 150, 12, 0.06) 0%, transparent 40%);
+}
+
+/* Textarea */
+[data-theme="light"] .description-group textarea {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .description-group textarea::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* Budget slider */
+[data-theme="light"] .budget-input-wrapper input[type="range"] {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Gender & action buttons */
+[data-theme="light"] .gender-btn {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .gender-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .clear-btn {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .clear-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Brand logo placeholder */
+[data-theme="light"] .brand-logo-placeholder {
+  background: linear-gradient(135deg, #e8e8ed 0%, #dcdce5 50%, #d0d0db 100%);
+}
+
+[data-theme="light"] .brand-name-small {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Watch card hover */
+[data-theme="light"] .watch-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Watch type badge */
+[data-theme="light"] .watch-type-badge {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Sidebar */
+[data-theme="light"] .picks-sidebar {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 247, 0.95) 100%);
+  border-color: rgba(184, 150, 12, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .picks-header h2 {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="light"] .category-header {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .category-header:hover {
+  background: rgba(184, 150, 12, 0.08);
+  border-color: rgba(184, 150, 12, 0.25);
+}
+
+[data-theme="light"] .category-header.expanded {
+  background: linear-gradient(135deg, rgba(184, 150, 12, 0.12) 0%, rgba(184, 150, 12, 0.06) 100%);
+  border-color: rgba(184, 150, 12, 0.3);
+}
+
+[data-theme="light"] .category-content {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(184, 150, 12, 0.15);
+}
+
+[data-theme="light"] .chevron {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .picks-list a {
+  color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .picks-list a:hover {
+  background: linear-gradient(135deg, rgba(184, 150, 12, 0.15) 0%, rgba(184, 150, 12, 0.08) 100%);
+  border-color: rgba(184, 150, 12, 0.35);
+}
+
+/* Error help */
+[data-theme="light"] .error-help {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .error-help code {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* API mode section */
+[data-theme="light"] .api-mode-section {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Toggle switch */
+[data-theme="light"] .toggle-slider {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  width: 40px;
+  height: 40px;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Header layout adjustment for toggle */
+.header {
+  position: relative;
+}
+
+.header-actions {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    top: 1rem;
+    right: 1rem;
+  }
 }
